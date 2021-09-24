@@ -1,33 +1,65 @@
+/**
+* General style
+*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+section {
+  padding: 40px 15px;
+  background: aliceblue;
+}
+section:nth-child(even) {
+  background: lavender;
+}
+.section-title {
+  font-size: 30px;
+  width: clamp(50%, 500px, 85%);
+  margin: 0 auto 20px;
+  padding: 0 20px 10px;
+  border-bottom: 1px solid #ccc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/**
+* Header
+*/
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  padding: 15px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.App-header h1 {
+  flex: 1 1 auto;
+  text-align: center;
+  font-weight: 500;
+  font-size: clamp(1.25rem, 1rem + 1.75vw, 2.5rem);
 }
-
+.App-logo {
+  flex-shrink: 0;
+  height: 100px;
+  width: auto;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +67,123 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/**
+* Tasks
+*/
+.all-tasks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px 20px;
+  margin-top: 30px;
+}
+.task {
+  background: transparent;
+  border: 3px solid aliceblue;
+  border-radius: 10px;
+  padding: 15px 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.task-serial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 3px solid aliceblue;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.task-title {
+  margin-bottom: 10px;
+}
+.task-title::first-letter {
+  text-transform: uppercase;
+}
+.task-status strong {
+  color: green;
+  font-style: italic;
+}
+.task-status strong.incomplete {
+  color: crimson;
+}
+/**
+* Battery
+*/
+.mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.battery {
+  display: inline-block;
+  margin-bottom: 20px;
+  position: relative;
+}
+.battery:after {
+  content: "";
+  width: 3px;
+  height: 14px;
+  background: #282C34;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(0, -50%);
+}
+.battery-state {
+  display: inline-block;
+  width: 150px;
+  height: 40px;
+  overflow: hidden;
+  background: #efefef;
+  border: 2px solid #282C34;
+  border-radius: 6px;
+  padding: 0;
+  line-height: 1;
+  position: relative;
+}
+#battery_fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: lime;
+}
+#battery_percentage {
+  display: inline-block;
+  font-size: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mobile button {
+  cursor: pointer;
+  background-color: lightgoldenrodyellow;
+  border: 2px solid crimson;
+  padding: 5px 15px;
+  margin: 0 5px;
+  font-weight: bold;
+  line-height: 1;
+  transition: 0.3s;
+}
+.mobile button:hover {
+  background-color: bisque;
+}
+
+/**
+* Blog
+*/
+.blog {
+  display: inline-block;
+  margin: 10px;
+  padding: 15px;
+  background: slategray;
+  color: aliceblue;
+  border: 1px solid white;
+  border-radius: 7px;
 }
