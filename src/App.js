@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react/cjs/react.development';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   return (
@@ -50,7 +49,7 @@ function Tasks() {
 
 function SingleTask(props) {
   const {serial, title, status} = props;
-  const taskTitle = title.length > 27 ? (title.slice(0, 27) + '...') : title;
+  const taskTitle = title.length > 20 ? (title.slice(0, 20) + '...') : title;
   const statusClass = status.toLowerCase() !== 'yes' ? 'incomplete' : 'complete';
 
   return (
